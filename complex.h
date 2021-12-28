@@ -3,15 +3,17 @@
 #include <QString>
 #include "iostream"
 
+// Класс комплексного числа
 class TComplex
 {
-   double re, im;
+   double re, im; //re - вещественная часть; im - мнимая часть
 public:
     TComplex();
-    TComplex(int);
-    TComplex(int, int);
-    TComplex(double,double);
-
+    TComplex(int); // Параметризированный конструктор. Принимает целое число и инициализирует им вещественную часть.
+    TComplex(int, int); // Принимает 2 целых числа и инициализирует ими вещественную часть и мнимую часть.
+    TComplex(double,double); // Принимает 2 вещественных числа и инициализирует ими вещественную часть и мнимую часть.
+      
+    // Перегрузка операторов
     TComplex operator * (TComplex);
     TComplex operator / (TComplex);
     TComplex operator + (TComplex);
