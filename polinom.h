@@ -9,18 +9,26 @@ class TPolinom
 {
     number a, b, c;
 public:
-    TPolinom(number, number,number); //Параметризированный конструктор, принимающий в качестве аргументов коэффициенты полинома
-    number value(number); //Функция возвращает значение полинома
-    int rootsDouble(number*); //Функция вычисления корней на множестве вещественных чисел. Возвращает число - количество корней.
-    int rootsComplex(number*); //Функция вычисления корней на множестве комплексных чисел. Возвращает число - количество корней.
+    // Параметризированный конструктор, принимающий в качестве аргументов коэффициенты полинома
+    TPolinom(const number&,const number&, const number& );
+    // Метод возвращает значение полинома
+    number value(const number&);
+    // Метод вычисления корней на множестве вещественных чисел. Возвращает число - количество корней.
+    int rootsDouble(number*);
+    // Метод вычисления корней на множестве комплексных чисел. Возвращает число - количество корней.
+    int rootsComplex(number*);
+    //Шаблоннный дружественный метод перегрузки оператора вывода. Для вывода числа в поток вывода.
     template <class T>
-    friend std::ostream& operator << (std::ostream&, TPolinom<T>&); //Шаблоннная дружественная функция перегрузки оператора вывода. Для вывода числа в поток вывода.
+    friend std::ostream& operator << (std::ostream&, TPolinom<T>&);
+    //Для вывода числа в строку.
     template <class T>
-    friend QString& operator << (QString&, TPolinom<T>&); //Для вывода числа в строку.
+    friend QString& operator << (QString&, TPolinom<T>&);
 };
 
 template <class number>
-TPolinom<number>::TPolinom(number x, number y, number z)
+TPolinom<number>::TPolinom(const number& x,
+                           const number& y,
+                           const number& z)
 {
     a = x;
     b = y;
@@ -28,13 +36,13 @@ TPolinom<number>::TPolinom(number x, number y, number z)
 }
 
 template <class number>
-number TPolinom<number>::value(number x)
+number TPolinom<number>::value(const number& x)
 {
     return a * x * x + b * x + c;
 }
 
 template<class number>
-int TPolinom<number>::rootsDouble(number* x){
+int TPolinom<number>::rootsDouble(number* x) {
     number d = b * b - a * 4 * c;
     if(a == 0 && b == 0)
     {
@@ -67,7 +75,7 @@ int TPolinom<number>::rootsDouble(number* x){
 }
 
 template<class number>
-int TPolinom<number>::rootsComplex(number* x){
+int TPolinom<number>::rootsComplex(number* x) {
     number d = b * b - a * 4 * c;
     number two = 2;
 
@@ -88,14 +96,16 @@ int TPolinom<number>::rootsComplex(number* x){
 }
 
 template <class number>
-std::ostream& operator << (std::ostream& os, TPolinom<number>& p)
+std::ostream& operator << (std::ostream& os,
+                           TPolinom<number>& p)
 {
     os << p.a << "x^2" << "+" << p.b << "x" << "+" << p.c;
     return os;
 }
 
 template <class number>
-QString& operator << (QString& s, TPolinom<number>& p)
+QString& operator << (QString& s,
+                      TPolinom<number>& p)
 {
     s<<p.a;
     s+="x^2+";
