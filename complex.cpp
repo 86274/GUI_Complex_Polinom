@@ -7,19 +7,19 @@ TComplex::TComplex()
     im = 0;
 }
 
-TComplex::TComplex(int v)
+TComplex::TComplex(const int& v)
 {
     re = v;
     im = 0;
 }
 
-TComplex::TComplex(double x, double y)
+TComplex::TComplex(const double& x, const double& y)
 {
     re=x;
     im=y;
 }
 
-TComplex::TComplex(int v, int i)
+TComplex::TComplex(const int& v, const int& i)
 {
     re = v;
     im = i;

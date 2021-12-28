@@ -15,8 +15,8 @@ SOURCES += \
 
 HEADERS += \
     interface.h \
-    number.h \
-    polinom.h
+    polinom.h \
+    complex.h
 
 FORMS += \
     interface.ui
