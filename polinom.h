@@ -3,19 +3,20 @@
 #include <iostream>
 #include "complex.h"
 
+//Шаблонный класс квадратного трёхчленного полинома для работы с вещественными и комплексными числами
 template <class number>
 class TPolinom
 {
     number a, b, c;
 public:
-    TPolinom(number, number,number);
-    number value(number);
-    int rootsDouble(number*);
-    int rootsComplex(number*);
+    TPolinom(number, number,number); //Параметризированный конструктор, принимающий в качестве аргументов коэффициенты полинома
+    number value(number); //Функция возвращает значение полинома
+    int rootsDouble(number*); //Функция вычисления корней на множестве вещественных чисел. Возвращает число - количество корней.
+    int rootsComplex(number*); //Функция вычисления корней на множестве комплексных чисел. Возвращает число - количество корней.
     template <class T>
-    friend std::ostream& operator << (std::ostream&, TPolinom<T>&);
+    friend std::ostream& operator << (std::ostream&, TPolinom<T>&); //Шаблоннная дружественная функция перегрузки оператора вывода. Для вывода числа в поток вывода.
     template <class T>
-    friend QString& operator << (QString&, TPolinom<T>&);
+    friend QString& operator << (QString&, TPolinom<T>&); //Для вывода числа в строку.
 };
 
 template <class number>
