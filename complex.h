@@ -6,13 +6,10 @@
 // Класс комплексного числа
 class TComplex
 {
-   double re, im; //re - вещественная часть; im - мнимая часть
 public:
-    TComplex();
-    TComplex(const int&); // Параметризированный конструктор. Принимает целое число и инициализирует им вещественную часть.
-    TComplex(const int&, const int&); // Принимает 2 целых числа и инициализирует ими вещественную часть и мнимую часть.
-    TComplex(const double& , const double&); // Принимает 2 вещественных числа и инициализирует ими вещественную часть и мнимую часть.
-      
+
+    TComplex(const double& re = 0, const double& im = 0): m_re{re}, m_im{im} {}
+
     // Перегрузка операторов
     TComplex operator * (TComplex);
     TComplex operator / (TComplex);
@@ -26,7 +23,8 @@ public:
     friend std::istream& operator >> (std::istream&, TComplex&);
     friend std::ostream& operator << (std::ostream&, TComplex);
     friend QString& operator << (QString&, TComplex);
-
+private:
+    double m_re, m_im; //re - вещественная часть; im - мнимая часть
 };
 
 #endif // TCOMPLEX_H
